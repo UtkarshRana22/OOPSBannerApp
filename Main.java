@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         
-
+        System.out.println("Merge testing");
      
         String[] banner = new String[7];
 
