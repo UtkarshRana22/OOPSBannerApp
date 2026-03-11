@@ -1,54 +1,67 @@
+class CharacterPattern {
+    private char character;
+    private String[] pattern;
 
+    // Constructor to store character data and its 7-line pattern
+    public CharacterPattern(char character, String[] pattern) {
+        this.character = character;
+        this.pattern = pattern;
+    }
 
+    public String[] getPattern() {
+        return pattern;
+    }
 
+    public char getCharacter() {
+        return character;
+    }
+}
 
 public class Main {
-        public static String[] O() {
-        return new String[]{
-                "  *****  ",
-                " *     * ",
-                " *     * ",
-                " *     * ",
-                " *     * ",
-                " *     * ",
-                "  *****  "
-        };
-    }
-
-    public static String[] P() {
-        return new String[]{
-                "  ****** ",
-                " *     * ",
-                " *     * ",
-                "  ****** ",
-                " *       ",
-                " *       ",
-                " *       "
-        };
-    }
-
-    public static String[] S() {
-        return new String[]{
-                "  ****** ",
-                " *       ",
-                " *       ",
-                "  *****  ",
-                "       * ",
-                "       * ",
-                "  ****** "
-        };
-    
-}
     public static void main(String[] args) {
+        // 1. Define patterns using the new CharacterPattern class
+        CharacterPattern oPattern = new CharacterPattern('O', new String[]{
+            "  ***** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  ***** "
+        });
 
-        String[] O = O();
-        String[] P = P();
-        String[] S = S();
+        CharacterPattern pPattern = new CharacterPattern('P', new String[]{
+            "  ****** ",
+            " * * ",
+            " * * ",
+            "  ****** ",
+            " * ",
+            " * ",
+            " * "
+        });
 
-        System.out.println("\n--- OOPS Banner (UC6) ---\n");
+        CharacterPattern sPattern = new CharacterPattern('S', new String[]{
+            "  ****** ",
+            " * ",
+            " * ",
+            "  ***** ",
+            "      * ",
+            "      * ",
+            "  ****** "
+        });
 
-        for (int i = 0; i < O.length; i++) {
-            System.out.println(O[i] + " " +O[i]+ " " + P[i] + " " + S[i]);
+    
+        CharacterPattern[] word = { oPattern, oPattern, pPattern, sPattern };
+
+        System.out.println("\n--- OOPS Banner (Encapsulated) ---\n");
+
+      
+        for (int i = 0; i < 7; i++) {
+            StringBuilder line = new StringBuilder();
+            for (CharacterPattern cp : word) {
+                line.append(cp.getPattern()[i]).append("  ");
+            }
+            System.out.println(line.toString());
         }
     }
 }
